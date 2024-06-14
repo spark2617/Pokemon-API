@@ -1,160 +1,141 @@
 import styled from 'styled-components';
+import colors from '../../style/global';
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #f0f0f0;
-  padding: 20px;
+export const HomeContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: ${colors.background};
+    color: ${colors.primary};
 `;
 
-export const Title = styled.h1`
-  font-size: 3rem;
-  color: #333;
-  margin-bottom: 30px;
-  text-align: center;
+export const Header = styled.header`
+    text-align: center;
+    margin: 20px 0;
+
+    h1 {
+        margin: 0;
+        color: ${colors.accent};
+    }
 `;
 
-export const PokemonList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
-  gap: 20px;
+export const CardContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
 `;
 
-export const PokemonCard = styled.li`
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
+export const FilterPanel = styled.div`
+    position: fixed;
+    top: 0;
+    left: ${props => (props.isOpen ? '0' : '-350px')};
+    width: 300px;
+    height: 100vh;
+    background-color: ${colors.card};
+    color: ${colors.primary};
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
 `;
 
-export const PokemonImage = styled.img`
-  width: 150px;
-  height: 150px;
-  margin-bottom: 15px;
+export const ContainerInput = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
 `;
 
-export const PokemonName = styled.span`
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
+export const FilterButton = styled.button`
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: ${colors.accent};
+    color: ${colors.background};
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
 `;
 
-export const PokemonId = styled.span`
-  font-size: 1rem;
-  color: #777;
-  margin-top: 5px;
+export const FilterTitle = styled.h2`
+    margin-bottom: 15px;
 `;
 
-export const PokemonType = styled.span`
-  font-size: 1rem;
-  color: #555;
-  margin-top: 10px;
+export const FilterCheckboxGroup = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 `;
 
-export const PokemonInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-`;
 
-export const ContainerInputSearch = styled.div`
-  width: 127.5vh;
-  max-height: 45px;
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-`;
 
-export const InputSearch = styled.input`
-  padding: 15px;
-  border: 1px solid #525252;
-  border-radius: 8px;
-  font-size: 16px;
-  width: 90vh;
-  color: #403a34;
+export const FilterCheckboxLabel = styled.label`
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  &:focus {
-    outline: 0;
-  }
-`;
+    height: 15px;
+    width: 50px;
 
-export const ButtonSearch = styled.button`
-  font-size: 1rem;
-  font-weight: 500;
-  height: 45px;
-  padding: 10px;
-  border-radius: 8px;
-  border:  3px solid #02c20c;
-  background-color: white;
-  transition: 0.2s;
-  color: #02c20c;
+    padding: 8px;
 
-  &:hover {
-    background-color: #02c20c;
-    transition: 0.2s;
+    font-size: 14px;
+
+    background-color: ${props=> props.checked ? colors.accent : colors.primary};
     color: white;
-  }
+
+    border: 1px solid ${colors.accent};
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+
+
+    input{
+        display:none;
+    }
 `;
 
-export const ContainerFilter = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 90vh;
-  margin-bottom: 20px;
-  gap: 10px;
+export const FilterInput = styled.input`
+    border: 1px solid rgb(105, 105, 105);
+    border-radius: 6px;
+    background-color: rgb(39, 39, 39);
+    color: ${colors.primary};
+    height: 25px;
+    padding: 5px;
 `;
 
-export const Dropdown = styled.select`
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #525252;
-  font-size: 16px;
-  color: #403a34;
-  background-color: #ffffff;
-
-  &:focus {
-    outline: 0;
-  }
+export const ApplyButton = styled.button`
+    background-color: ${colors.accent};
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
 `;
 
-export const SortButton = styled.button`
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: 1px solid #525252;
-  font-size: 16px;
-  color: #ffffff;
-  background-color: #009e08;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #02c20c;
-  }
+export const ResetButton = styled.button`
+    background-color: ${colors.background};
+    color: ${colors.accent};
+    border: 1px solid ${colors.accent};
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
 `;
 
-
-export const MultiSelect = styled.select`
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+export const Footer = styled.footer`
+    background-color: ${colors.card};
+    color: ${colors.primary};
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    width: 100%;
+    bottom: 0;
 `;

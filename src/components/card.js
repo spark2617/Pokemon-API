@@ -1,68 +1,69 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import colors from '../style/global.js';
 
-export const PokemonCard = styled.li`
+const upDetails= keyframes`
 
-    background: rgba(14, 160, 38, 0.36);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6.6px);
-    -webkit-backdrop-filter: blur(6.6px);
+    0%{
+        transform: translateY(100%);
+    }
 
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-`;
-
-export const PokemonImage = styled.img`
-  width: 150px;
-  height: 150px;
-  margin-bottom: 15px;
-`;
-
-export const PokemonName = styled.span`
-  font-size: 1.250rem;
-  font-weight: 400;
-  text-align: center;
-`;
-
-export const PokemonId = styled.span`
-  font-size: 1rem;
-  color: #777;
-  margin-top: 5px;
-`;
-
-export const PokemonType = styled.span`
-  font-size: 1rem;
-  color: #555;
-  margin-top: 10px;
-`;
-
-export const PokemonInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
-
-  width:100%;
-
-  
-`;
-
-export const Hitpoints = styled.span`
-
-  color: #f50f0f;
+    100%{
+        transform: translateY(0%);
+        
+    }
 
 `
 
-export const TypePokemon = styled.span`
+export const CardContainer = styled.div`
+    background: ${colors.card};
+    border-radius: 10px;
+    margin: 15px;
+    width: 250px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-    color: #423f3f;
+&:hover {
+    transform: scale(1.05);
+}
 
-`
+img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+h3 {
+    margin: 10px;
+    text-align: center;
+}
+
+.info {
+    padding: 10px;
+    text-align: left;
+}
+
+.info p {
+    margin: 10px 0;
+}
+.hover-info {
+        display: none;
+        padding: 10px;
+        margin: 0;
+        background: ${colors.glassDark};
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        color: ${colors.primary};
+        border-radius: 10px;
+        animation: ${upDetails} 0.5s ease-in-out forwards;
+
+    }
+
+    &:hover .hover-info {
+        display: block;
+        
+    }
+`;
+
